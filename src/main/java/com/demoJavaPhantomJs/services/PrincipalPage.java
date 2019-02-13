@@ -38,7 +38,12 @@ public class PrincipalPage {
         Capabilities.setCapability("IsJavaScriptEnabled", true);
         Capabilities.setCapability("applicationCacheEnabled", false);
         Capabilities.setCapability("phantomjs.page.settings.userAgent", "Mozilla / 5.0(Windows NT 6.1) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 40.0.2214.94 Safari / 537.36");
-        //Capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "");
+        String pathcurrentproject = System.getProperty("user.dir");
+        String pathtoBinary = "\\phantomjs\\phantomjs.exe";
+        
+        pathcurrentproject = pathcurrentproject.concat(pathtoBinary);
+                
+        Capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, pathcurrentproject);
 
         PhantomJSDriverService driverService = PhantomJSDriverService.createDefaultService(Capabilities);
 
@@ -69,6 +74,17 @@ public class PrincipalPage {
         try {    
             Document doc = Jsoup.connect(_url).get();
             Elements links = doc.select("a[href]");
+            
+            //links.attr("class");
+            
+            //links.hasClass("class") 
+            
+            Elements mas  =    links.attr("class", "href");
+            
+            
+            
+            //links.hasClass("links.attr(pathtoBinary);")
+            
             
              System.out.println("OK");
              
